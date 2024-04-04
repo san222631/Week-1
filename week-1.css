@@ -60,7 +60,7 @@
 
 .text-promo{
     background-color: aquamarine;
-    width: 400px;
+    flex-grow: 1; /*將block剩餘的空間均分給有套用到這個class的item*/
     display: flex;
     align-items: center;
     margin: 10px;
@@ -84,19 +84,13 @@
 
 /*bigger box*/
 
-.row-2-3{
-    display: flex;
-    justify-content: center;
-    background-color: lightskyblue;
-}
+
 
 .title-big{
     position: relative; 
     display: flex;
 
     background-color: lightpink;
-
-    width: 400px;
 }
 
 .image-big{
@@ -140,25 +134,49 @@
 
 
 /*smaller box*/
+.row-2-3{
+    background-color: lightskyblue;
+}
+
+.title{
+    /*使5個items水平排列*/
+    display: flex;
+    /*使title block置中*/
+    margin: auto; 
+
+    background-color: lightseagreen;
+    width: 1200px;
+}
+
+.title-small-1{
+    position: relative; 
+    display: flex;
+    background-color: lightblue;
+    /*flex-grow, flex-shrink, flex-basis*/
+    /*為什麼flex: 2,1,0不管用??*/
+    flex: 2;
+} 
+
+
+
+
 .title-small{
     position: relative; 
     display: flex;
     background-color: lightgoldenrodyellow;
-
-    width: 200px;
+    flex: 1;
 }
 
 .image-small{
-    object-fit: cover;
-    object-position: left;
 
-    width: 180px;
-    height:auto;
+    height: 70px;
 
     margin: 10px;
+
 }
 
-.title-small .inner-box-small{
+
+.inner-box-small{
     position: absolute;
 
     font-size: 20px;
@@ -179,51 +197,55 @@
 
 
 /*先寫平板*/
-@media (max-width:1200px){  
+@media (min-width:601px) and (max-width:1200px){  
     /*寬度小於1200px,就套用這個css的設定*/
+    /*寫在這邊的新設定會套用，原本的舊設定若沒有更改，不用在這邊重寫，依然會套用*/
+    
     /*small box promotion*/
-    .row-1{
-        display: flex;
-        justify-content: center;
-        background-color: beige;
-    }
-
-
     .promotion{      
         width: 90%;
-        /*使用flex-wrap取代display:flex&justify-content:center*/
-        flex-wrap: wrap;
-    
+        /*使用flex-wrap搭配display:flex&justify-content:center*/
+        
+        flex-wrap: wrap;    
     }
 
     .text-promo{
         width: 45%;
-        margin-left: 10px;
-     
-        
     }
 
-
-    .image-promo{
-        object-fit: cover;
-
-        width: 80px;
-        height: 50px;
-        /*是為了消除圖片下面有莫名的空白，似乎是系統的問題*/
-        display: block;
+    /*title 1-4*/
+    .row-2-3{
+        /*舊設定
+        display: flex;
+        justify-content: center;
+        background-color: lightskyblue;
+        */
+        width: 90%
     }
 
+    .title-big{
+        /*舊設定
+        position: relative; 
+        display: flex;
+    
+        background-color: lightpink;
+        */
+
+    }
+
+    .image-big{
+        /*舊設定
+        object-fit: cover;    
+        width: 380px;
+        height: auto;    
+        margin: 10px;
+        */
+   
+    }
+    
 
 
-/*EX*/
-    .list{
-        flex-wrap:wrap;
-    }
-    /*想想要怎麼排版，45%+45%=90%，
-    第三個45%就往下排*/
-    .product{
-        width:45%;
-    }
+
 }
 
 
@@ -239,22 +261,4 @@
         flex-wrap:wrap;
     }
     */
-
-
-
-
-    /*EX*/
-    .headline{
-        font-size:20px;
-    }
-    .desktopMenu{
-        display:none;
-    }
-    .mobileMenu{
-        display:block;
-    }
-    /*想想要怎麼排版*/
-    .product{
-        width:90%;
-    }
 }
