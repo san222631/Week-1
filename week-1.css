@@ -85,7 +85,7 @@ p{
 }
 
 
-
+/*超大橫幅Welcome to My Home*/
 .navigation{
     background-color: lightcyan;
     height: 250px;
@@ -97,6 +97,7 @@ p{
 
 .welcome{
     font-size: 40px;
+    text-align: center;
 }
 
   
@@ -118,7 +119,7 @@ p{
     display: grid;
 
     grid-template-columns: repeat(3, 1fr) ; /*1fr 1fr 1fr 可以寫成 (3, 1fr)*/
-    grid-template-rows: 70px;
+    grid-template-rows: 50px;
     width: 1200px;
 
     column-gap: 20px;
@@ -249,7 +250,7 @@ p{
 
 
 
-@media screen and (min-width:361px) and (max-width:600px){
+@media screen and  (max-width:600px){
 
     .grid-container-promo{    
         grid-template-columns: 1fr ; /*1fr 1fr 1fr 可以寫成 (3, 1fr)*/
