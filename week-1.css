@@ -1,29 +1,87 @@
-.container{
-    background-color: bisque; 
+/*確保內容會佔據整個螢幕*/
+.body{
+    min-height: 100vh;
 }
 
 
-.item-left{
-    background-color: cadetblue;
-    /*is float vertically center with another item?*/
-    float:left;
+/*點開漢堡後要出現的表單*/
+/*消除預設的margin跟padding*/
+*{margin: 0;
+    padding: 0;
+}
+/*表單設計*/
+nav{
+    background-color: white;
+    /*box-shadow: ;加深陰影*/
+}
 
+nav ul{
+    width: 100%; /*expand full width of its container*/
+    list-style: none; /**/
+    display: flex;
+    justify-content: flex-end; /*左右或置中，可加align-item做垂直置中*/
+    align-items: center;
+}
+
+nav li{
+    height:50px;
+}
+
+nav a{
+    height: 100%; /*to match the height of the list items*/
+    padding: 0 10px;
+    text-decoration: none; /*remove the default underline*/
+    display: flex;
+    align-items: center; /*center the link content vertically*/
+    color: black;
+}
+
+/*游標在字上移動，就有灰色背景出現*/
+nav a:hover{
+    background-color: lightgray;
+}
+
+/*選擇第一個item使他靠左邊*/
+nav li:first-child{
+    margin-right: auto;
+}
+
+
+/*開始做sidebar*/
+.sidebar{
+    position: fixed; /*因為不想要sidebar影響其他的item*/
+    top: 0;
+    right: 0;
+    height: 100vh; /*full height of the screen*/
+    width: 250px;
+    z-index: 999; /*確保sidebar永遠在最上面的圖層，蓋過其他東西*/
+    background-color: white;
+    /*box-shadow: ;加深陰影*/
+    display: none; /*讓item從上排到下*/
+    flex-direction: column;
+    align-items: flex-start; /*有問題!!!!!*/
+    justify-content: flex-start; /*把item移到上面*/
+
+    /*backdrop-filter: blur(10px); /*決定在這個sidebar後面的東西看起來如何*/
+}
+
+.sidebar li{
+    width: 100%; /*讓list寬度充滿container*/
+}
+
+.sidebar a{
+    width: 100%; /*確保寬度充滿container*/
+}
+
+
+.showOnMobile{
+    display: none;
+}
+
+p{
     font-size: 20px;
 }
 
-
-
-.item-right{
-    background-color: orange;
-    float:right;
-
-    font-size: 20px;
-}
-
-
-.clear{
-    clear: both;
-}
 
 
 .navigation{
@@ -39,188 +97,61 @@
     font-size: 40px;
 }
 
+  
 
 
-/*small box promotion*/
-.row-1{
+
+
+
+
+/*promotion*/
+.wrapper1{
     display: flex;
     justify-content: center;
-    background-color: beige;
-}
-
-
-.promotion{
-    background-color: lightgrey;
-
-    display: flex;
-    justify-content: center;
-    width: 1200px;
-
-}
-
-.text-promo{
-    background-color: aquamarine;
-    flex-grow: 1; /*將block剩餘的空間均分給有套用到這個class的item*/
-    display: flex;
     align-items: center;
-    margin: 10px;
-
-    font-size: 20px;
-
-
 }
 
 
-.image-promo{
-    object-fit: cover;
+.grid-container-promo{
+    display: grid;
 
-    width: 80px;
-    height: 50px;
-    /*是為了消除圖片下面有莫名的空白，似乎是系統的問題*/
-    display: block;
-}
-
-
-
-
-
-
-
-
-/*smaller box*/
-.row-2-3{
-    background-color: lightskyblue;
-}
-
-.wrapper{
-    /*使5個items水平排列*/
-    display: flex;
-    /*使title block置中*/
-    margin: auto; 
-
-    background-color: lightseagreen;
+    grid-template-columns: repeat(3, 1fr) ; /*1fr 1fr 1fr 可以寫成 (3, 1fr)*/
+    grid-template-rows: 70px;
     width: 1200px;
 }
 
-.title-small-1{
-    position: relative; 
+.card-promo{
     display: flex;
-    background-color: lightblue;
-    /*flex-grow, flex-shrink, flex-basis*/
-    /*為什麼flex: 2,1,0不管用??*/
-    flex: 2;
-} 
 
-
-
-
-.title-small{
-    position: relative; 
-    display: flex;
-    background-color: lightgoldenrodyellow;
-    flex: 1;
-}
-
-.image-small{
-
-    /*object-fit: cover; 怎麼辦? 圖片一直會撐爆block*/
-    width: 80px;
     margin: 10px;
-
 }
 
-
-.inner-box-small{
-    position: absolute;
-
-    font-size: 20px;
-    background-color: rgba(127, 255, 212, 0.5);
-    bottom: 0;
-    right: 0;
-    left: 0;
-    text-align: center;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-
-
-/*再寫手機版，要加min-width嗎????*/
-@media (max-width:600px){
-    /*寬度小於600px,就套用這個css的設定*/
-    /*
-    這個不用重新寫，因為小於500就是小於1250???
-    .list{
-        flex-wrap:wrap;
-    }
-    */
-}
-
-
-
-
-
-
-
-/*目前沒再用的class，bigger box*/
-
-.title-big{
-    position: relative; 
-    display: flex;
-
-    background-color: lightpink;
-}
-
-.image-big{
+.card-promo img{
     object-fit: cover;
 
-    width: 380px;
-    height: auto; /*不確定auto是不是對的*/
-
-    margin: 10px;
+    width: 80px;
+    height: 100%;
 }
 
-.star{
-    position: absolute;
-    width: 30px;
-    height: auto;
-    right: 0;
-    margin-top: 10px;
-    margin-right: 10px;
-    opacity: 80%;    
-}
-
-
-.title-big .inner-box-big{
-    position: absolute;
+.text-pp{
+    background-color: lightcyan;
+ 
     display: flex;
-    justify-content: center;
     align-items: center;
 
+
     font-size: 20px;
-    background-color: rgba(127, 255, 212, 0.5);
-    bottom: 0;
-    right: 0;
-    left: 0;
-    text-align: center;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 100%;
 }
 
-    
 
 
 
 
-/*練習grid*/
+
+
+
+/*Title1-10，練習grid*/
 .wrapper2{
     display: flex;
     justify-content: center;
@@ -231,24 +162,18 @@
 .grid-container{
     display: grid;
 
-    background-color: blanchedalmond;
-    border: 2px solid lightseagreen;
 
 
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr ; /*1fr 1fr 1fr 可以寫成 (3, 1fr)*/
     grid-template-rows: 200px 200px;
     width: 1200px;
-
-
-
 }
 
 .card{
-    border: 1px solid black;
+
     position: relative;
 
     margin: 10px;
-
 }
 
 /*重要!是在card裡面選img*/
@@ -257,7 +182,6 @@
     width: 100%; /*Ensure the image fills the grid item*/
     height: 100%; /*Ensure the image fills the grid item*/
     object-fit: cover;
-
 }
 
 
@@ -280,7 +204,7 @@
     text-align: center;
 
     font-size: 20px;
-    background-color: rgba(127, 255, 212, 0.5);
+    background-color: rgba(127, 229, 255, 0.336);
 }
 
 
@@ -289,50 +213,6 @@
 
 
 
-
-/*promotion*/
-.wrapper1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.grid-container-promo{
-    display: grid;
-
-    background-color: blanchedalmond;
-    border: 2px solid lightseagreen;
-
-
-    grid-template-columns: repeat(3, 1fr) ; /*1fr 1fr 1fr 可以寫成 (3, 1fr)*/
-    grid-template-rows: 70px;
-    width: 1200px;
-}
-
-.card-promo{
-    display: flex;
-
-    margin: 10px;
-}
-
-.card-promo img{
-    object-fit: cover;
-
-    width: 80px;
-    height: 100%;
-}
-
-.text-pp{
-    background-color: aquamarine;
- 
-    display: flex;
-    align-items: center;
-
-
-    font-size: 20px;
-    width: 100%;
-}
 
 
 
@@ -380,4 +260,33 @@
 
         width: 90%;
     }
+
+    /*隱藏item*/
+    .item{
+        display: none;
+    }
+    /*讓他出現*/
+    .burger-menu-icon{
+        display: block;
+    }
+
+
+
+    .hideOnMobile{
+        display: none;
+    }
+
+    .showOnMobile{
+        display: block;
+    }
 }
+
+
+
+
+
+
+
+
+
+
