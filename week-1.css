@@ -225,7 +225,7 @@ p{
 
     .grid-container-promo{    
         grid-template-columns: repeat(2, 1fr) ; /*1fr 1fr 1fr 可以寫成 (3, 1fr)*/
-        grid-template-rows: repeat(2, 70px);
+        grid-template-rows: repeat(2, 50px);
         width: 90%;
     }
 
@@ -254,7 +254,7 @@ p{
 
     .grid-container-promo{    
         grid-template-columns: 1fr ; /*1fr 1fr 1fr 可以寫成 (3, 1fr)*/
-        grid-template-rows: repeat(3, 70px);
+        grid-template-rows: repeat(3, 50px);
         width: 90%;
     }
 
